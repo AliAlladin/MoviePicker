@@ -51,16 +51,28 @@ def findSomethingGood():
     top250Movies = json.loads(data.decode("utf-8"))
 
     movie = random.choice(top250Movies['items'])
-
     print(movie)
 
-    choice = input('Want another recommendation? (yes/no): ')
+    choice = input('Already seen this movie? (yes/no): ')
+    if choice == 'yes':
+        #addToSeen(movie)
+        findSomethingGood()
 
+    choice = input('Want another recommendation? (yes/no): ')
     if choice == 'yes':
         findSomethingGood()
     elif choice == 'no':
         main()
 
+# This function adds the movie to "seen.json" file if it has already been seen by the user.
+def addToSeen(movie):
+    with open('./seen.json') as json_file:
+        data = json.load(json_file)
+        temp = data['movies']
+        temp.apend(movie)
+
+    with open('./seen.json', 'w') as file:
+        json.dump(data, file)
 
 def main():
     printMenu()
