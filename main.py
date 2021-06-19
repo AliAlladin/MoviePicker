@@ -1,11 +1,8 @@
-import http.client
 import json
 import random
 
-conn = http.client.HTTPSConnection("imdb-api.com", 443)
-payload = ''
-headers = {}
-apiKey = 'k_duwxdunl'
+from apiCommunicator import api
+from listHandler import *
 
 # Menu for the program
 def printMenu():
@@ -22,7 +19,11 @@ def getChoice():
     choice = input('Type a number and press enter: ')
     print()
     if choice == '1':
-        searchMovie()
+        title = input("Type the title of the movie and press enter: ")
+        movies = api.searchMovie(title)
+        for movie in movies:
+            print(movie)
+
     elif choice == '2':
         findSomethingGood()
     elif choice == '3':
@@ -33,49 +34,33 @@ def getChoice():
         print('\nPlease choose one of the alternatives in the menu: ')
         getChoice()
 
-# Function that searches for a movie by title
-def searchMovie():
-    title = input("Type the title of the movie and press enter: ")
-    conn.request("GET", "/en/API/SearchTitle/" + apiKey + '/' + title.replace(' ', '%20'), payload, headers)
-    res = conn.getresponse()
-    movies = json.loads(res.read().decode("utf-8"))
-
-    for movie in movies['results']:
-        print(movie)
-
 # Randomly returns a movie among the top250
 def findSomethingGood():
-    conn.request("GET", "/en/API/Top250Movies/" + apiKey, payload, headers)
-    res = conn.getresponse()
-    data = res.read()
-    top250Movies = json.loads(data.decode("utf-8"))
+    # top250Movies = api.getTop250();
 
-    movie = random.choice(top250Movies['items'])
-    print(movie)
+    with open('./top250.json') as top250:
+        top250Movies = json.loads(top250.read())
 
-    choice = input('Already seen this movie? (yes/no): ')
-    if choice == 'yes':
-        #addToSeen(movie)
-        findSomethingGood()
+    while(True):
+        # movie = random.choice(top250Movies)
+        movie = random.choice(top250Movies['items'])
+        print(movie)
 
-    choice = input('Want another recommendation? (yes/no): ')
-    if choice == 'yes':
-        findSomethingGood()
-    elif choice == 'no':
-        main()
-
-# This function adds the movie to "seen.json" file if it has already been seen by the user.
-def addToSeen(movie):
-    with open('./seen.json') as json_file:
-        data = json.load(json_file)
-        temp = data['movies']
-        temp.apend(movie)
-
-    with open('./seen.json', 'w') as file:
-        json.dump(data, file)
+        choice = input('Already seen this movie? (yes/no): ')
+        if choice == 'yes':
+            addToJson('seen.json', movie)
+            continue
+        elif choice == 'no':
+            choice = input('Want another recommendation? (yes/no): ')
+            if choice == 'yes':
+                continue
+            elif choice == 'no':
+                break
 
 def main():
-    printMenu()
-    getChoice()
+    while(True):
+        printMenu()
+        getChoice()
 
-main()
+if __name__ == "__main__":
+    main()
