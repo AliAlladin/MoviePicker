@@ -36,13 +36,8 @@ def getChoice():
 
 # Recommends the user random movies from the top 250.
 def findSomethingGood():
-    # top250Movies = api.getTop250();
-    with open('./top250.json') as top250:
-        top250Movies = json.loads(top250.read())
-
     while(True):
-        # movie = random.choice(top250Movies)
-        movie = random.choice(top250Movies['items'])
+        movie = getRandomMovie()
         if not alreadyInList('seen.json', movie) and not alreadyInList('watchlist.json', movie):
             print(movie)
         else:
@@ -63,6 +58,21 @@ def findSomethingGood():
                 continue
             elif choice == 'no':
                 break
+
+def getRandomMovie():
+    # top250Movies = api.getTop250();
+    with open('./top250.json') as top250:
+        top250Movies = json.loads(top250.read())
+
+    movie = random.choice(top250Movies['items'])
+
+    if not alreadyInList('seen.json', movie) and not alreadyInList('watchlist.json', movie):
+        return movie
+    else:
+        getRandomMovie()
+
+    # return random.choice(top250Movies)
+
 
 def main():
     while(True):
