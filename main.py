@@ -57,8 +57,6 @@ def findSomethingGood():
             if choice == 'yes':
                 addToJson('watchlist.json', movie)
                 print('Added to your watchlist!\n')
-            elif choice == 'no':
-                continue
 
             choice = input('Want another recommendation? (yes/no): ')
             if choice == 'yes':
