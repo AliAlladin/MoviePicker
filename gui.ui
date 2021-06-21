@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>750</width>
-    <height>339</height>
+    <width>1000</width>
+    <height>330</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -38,106 +38,601 @@
    <bool>true</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="posterImage">
+   <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>70</y>
-      <width>180</width>
-      <height>240</height>
+      <x>0</x>
+      <y>50</y>
+      <width>1000</width>
+      <height>280</height>
      </rect>
     </property>
-    <property name="styleSheet">
-     <string notr="true">background-color:red;</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>studentplakat.jpg</pixmap>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QLabel" name="title">
-    <property name="geometry">
-     <rect>
-      <x>220</x>
-      <y>70</y>
-      <width>510</width>
-      <height>40</height>
-     </rect>
-    </property>
-    <property name="cursor">
-     <cursorShape>ArrowCursor</cursorShape>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color : white;
-font: bold 24pt &quot;Avenir&quot;;</string>
-    </property>
-    <property name="text">
-     <string>It's a Wonderful Life (1946)</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="crewLabel">
-    <property name="geometry">
-     <rect>
-      <x>220</x>
-      <y>160</y>
-      <width>50</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Avenir</family>
-      <pointsize>18</pointsize>
-      <weight>75</weight>
-      <italic>false</italic>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color : white;
+    <widget class="QWidget" name="start">
+     <widget class="QWidget" name="verticalLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>80</y>
+        <width>252</width>
+        <height>116</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QPushButton" name="top250Button">
+         <property name="minimumSize">
+          <size>
+           <width>250</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+	background-color: #049DBF;
+	color: white;
+	font: bold 18pt &quot;Avenir&quot;;
+	border-radius: 25px;
+	margin-right: 5px;
+}
+
+QPushButton:hover {
+	background-color: #058ba8;
+}
+
+QPushButton:pressed {
+	background-color: #025373;
+}</string>
+         </property>
+         <property name="text">
+          <string>Top 250</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="mostPopButton">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>250</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+	background-color: #A60D70;
+	color: white;
+	font: bold 18pt &quot;Avenir&quot;;
+	border-radius: 25px;
+	margin-right: 5px;
+}
+
+QPushButton:hover {
+	background-color: #960c66;
+}
+
+QPushButton:pressed {
+	background-color: #87095b;
+}</string>
+         </property>
+         <property name="text">
+          <string>Most Popular</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="movies">
+     <widget class="QLabel" name="crewLabel">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>110</y>
+        <width>50</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Avenir</family>
+        <pointsize>18</pointsize>
+        <weight>75</weight>
+        <italic>false</italic>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color : white;
 font: bold 18pt &quot;Avenir&quot;;</string>
-    </property>
-    <property name="text">
-     <string>Crew:</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="crewList">
-    <property name="geometry">
-     <rect>
-      <x>280</x>
-      <y>160</y>
-      <width>450</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Avenir</family>
-      <pointsize>18</pointsize>
-      <weight>50</weight>
-      <italic>false</italic>
-      <bold>false</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color : white;
+      </property>
+      <property name="text">
+       <string>Crew:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="imdbRating">
+      <property name="geometry">
+       <rect>
+        <x>340</x>
+        <y>70</y>
+        <width>450</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Avenir</family>
+        <pointsize>18</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color : white;
 font: 18pt &quot;Avenir&quot;;</string>
-    </property>
-    <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Frank Capra (dir.), James Stewart, Donna Ree&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;8.6&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="title">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>20</y>
+        <width>761</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="cursor">
+       <cursorShape>ArrowCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color : white;
+font: bold 24pt &quot;Avenir&quot;;</string>
+      </property>
+      <property name="text">
+       <string>It's a Wonderful Life (1946)</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="horizontalLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>210</y>
+        <width>761</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="buttons_2">
+       <item>
+        <widget class="QPushButton" name="addToSeenButton">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+	background-color: #049DBF;
+	color: white;
+	font: bold 18pt &quot;Avenir&quot;;
+	border-radius: 25px;
+	margin-right: 5px;
+}
+
+QPushButton:hover {
+	background-color: #058ba8;
+}
+
+QPushButton:pressed {
+	background-color: #025373;
+}</string>
+         </property>
+         <property name="text">
+          <string>Already seen</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="addToWatchlistButton">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+	background-color: #049DBF;
+	color: white;
+	font: bold 18pt &quot;Avenir&quot;;
+	border-radius: 25px;
+	margin-right: 5px;
+}
+
+QPushButton:hover {
+	background-color: #058ba8;
+}
+
+QPushButton:pressed {
+	background-color: #025373;
+}</string>
+         </property>
+         <property name="text">
+          <string>Add to watchlist</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="newSuggestionButton">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+	background-color: #049DBF;
+	color: white;
+	font: bold 18pt &quot;Avenir&quot;;
+	border-radius: 25px;
+	margin-right: 5px;
+}
+
+QPushButton:hover {
+	background-color: #058ba8;
+}
+
+QPushButton:pressed {
+	background-color: #025373;
+}</string>
+         </property>
+         <property name="text">
+          <string>New suggestion</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QLabel" name="crewList">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>110</y>
+        <width>701</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Avenir</family>
+        <pointsize>18</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color : white;
+font: 18pt &quot;Avenir&quot;;</string>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Frank Capra (dir.), James Stewart, Donna Ree&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="posterImage">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>20</y>
+        <width>180</width>
+        <height>240</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:red;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>studentplakat.jpg</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="ratingLabel">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>70</y>
+        <width>110</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Avenir</family>
+        <pointsize>18</pointsize>
+        <weight>75</weight>
+        <italic>false</italic>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color : white;
+font: bold 18pt &quot;Avenir&quot;;</string>
+      </property>
+      <property name="text">
+       <string>IMDb-rating: </string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_3">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>150</y>
+        <width>321</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+	color : #04C4D9;
+	font: 18pt &quot;Avenir&quot;;
+	text-align:left;
+}
+
+QPushButton:hover {
+	font: 19pt &quot;Avenir&quot;;
+}</string>
+      </property>
+      <property name="text">
+       <string>Watch trailer (opens in YouTube)</string>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="lists">
+     <widget class="QScrollArea" name="scrollArea">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>1000</width>
+        <height>280</height>
+       </rect>
+      </property>
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="list">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>998</width>
+         <height>278</height>
+        </rect>
+       </property>
+       <widget class="QWidget" name="listItem" native="true">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>1000</width>
+          <height>80</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <widget class="QLabel" name="listItemImage">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>10</y>
+           <width>50</width>
+           <height>60</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color:red;</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap>studentplakat.jpg</pixmap>
+         </property>
+         <property name="scaledContents">
+          <bool>true</bool>
+         </property>
+        </widget>
+        <widget class="QLabel" name="listItemRatingLabel">
+         <property name="geometry">
+          <rect>
+           <x>80</x>
+           <y>40</y>
+           <width>111</width>
+           <height>30</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Avenir</family>
+           <pointsize>18</pointsize>
+           <weight>75</weight>
+           <italic>false</italic>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color : white;
+font: bold 18pt &quot;Avenir&quot;;</string>
+         </property>
+         <property name="text">
+          <string>IMDb-rating:</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="listItemTitle">
+         <property name="geometry">
+          <rect>
+           <x>80</x>
+           <y>10</y>
+           <width>821</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="cursor">
+          <cursorShape>ArrowCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color : white;
+font: bold 24pt &quot;Avenir&quot;;</string>
+         </property>
+         <property name="text">
+          <string>It's a Wonderful Life (1946)</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="deleteButton">
+         <property name="geometry">
+          <rect>
+           <x>920</x>
+           <y>10</y>
+           <width>50</width>
+           <height>50</height>
+          </rect>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: white;
+font: 48pt &quot;Avenir&quot;;</string>
+         </property>
+         <property name="text">
+          <string>x</string>
+         </property>
+         <property name="flat">
+          <bool>true</bool>
+         </property>
+        </widget>
+        <widget class="QLabel" name="listItemCrewList">
+         <property name="geometry">
+          <rect>
+           <x>320</x>
+           <y>40</y>
+           <width>571</width>
+           <height>30</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Avenir</family>
+           <pointsize>18</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color : white;
+font: 18pt &quot;Avenir&quot;;</string>
+         </property>
+         <property name="text">
+          <string>Person 1</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="listItemCrewLabel_2">
+         <property name="geometry">
+          <rect>
+           <x>260</x>
+           <y>40</y>
+           <width>50</width>
+           <height>30</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Avenir</family>
+           <pointsize>18</pointsize>
+           <weight>75</weight>
+           <italic>false</italic>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color : white;
+font: bold 18pt &quot;Avenir&quot;;</string>
+         </property>
+         <property name="text">
+          <string>Crew:</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="listItemRating">
+         <property name="geometry">
+          <rect>
+           <x>200</x>
+           <y>40</y>
+           <width>31</width>
+           <height>30</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Avenir</family>
+           <pointsize>18</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color : white;
+font: 18pt &quot;Avenir&quot;;</string>
+         </property>
+         <property name="text">
+          <string>8.6</string>
+         </property>
+        </widget>
+       </widget>
+      </widget>
+     </widget>
+    </widget>
    </widget>
    <widget class="QWidget" name="menu" native="true">
     <property name="geometry">
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>750</width>
+      <width>1000</width>
       <height>50</height>
      </rect>
     </property>
@@ -147,35 +642,21 @@ font: 18pt &quot;Avenir&quot;;</string>
     <property name="styleSheet">
      <string notr="true">background-color : #011826;</string>
     </property>
-    <widget class="QLabel" name="label">
+    <widget class="QWidget" name="horizontalLayoutWidget_3">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>10</y>
-       <width>140</width>
-       <height>30</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">font: 24pt &quot;Raleway&quot;;
-color: white;</string>
-     </property>
-     <property name="text">
-      <string>MoviePicker</string>
-     </property>
-    </widget>
-    <widget class="QWidget" name="horizontalLayoutWidget_2">
-     <property name="geometry">
-      <rect>
-       <x>440</x>
+       <x>690</x>
        <y>0</y>
        <width>291</width>
        <height>51</height>
       </rect>
      </property>
-     <layout class="QHBoxLayout" name="menuButtons">
+     <layout class="QHBoxLayout" name="menuButtons_2">
       <item>
-       <widget class="QPushButton" name="pushButton_2">
+       <widget class="QPushButton" name="seenButton">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -208,7 +689,7 @@ QPushButton:pressed {
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton">
+       <widget class="QPushButton" name="watchlistButton">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -242,217 +723,32 @@ QPushButton:pressed {
       </item>
      </layout>
     </widget>
-   </widget>
-   <widget class="QLabel" name="trailerLink">
-    <property name="geometry">
-     <rect>
-      <x>220</x>
-      <y>200</y>
-      <width>320</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Avenir</family>
-      <pointsize>18</pointsize>
-      <weight>50</weight>
-      <italic>false</italic>
-      <bold>false</bold>
-     </font>
-    </property>
-    <property name="cursor">
-     <cursorShape>PointingHandCursor</cursorShape>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QLabel {
-	color : #04C4D9;
-	font: 18pt &quot;Avenir&quot;;
-}
-
-QLabel:hover {
-	font: 20pt &quot;Avenir&quot;;
-}</string>
-    </property>
-    <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Watch trailer (opens in YouTube)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-   </widget>
-   <widget class="QWidget" name="horizontalLayoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>220</x>
-      <y>250</y>
-      <width>511</width>
-      <height>62</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="buttons">
-     <item>
-      <widget class="QPushButton" name="addToSeen">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>50</height>
-        </size>
-       </property>
-       <property name="cursor">
-        <cursorShape>PointingHandCursor</cursorShape>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton {
-	background-color: #049DBF;
-	color: white;
-	font: bold 18pt &quot;Avenir&quot;;
-	border-radius: 25px;
-	margin-right: 5px;
-}
-
-QPushButton:hover {
-	background-color: #058ba8;
-}
-
-QPushButton:pressed {
-	background-color: #025373;
-}</string>
-       </property>
-       <property name="text">
-        <string>Already seen</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="addToWatchlist">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>50</height>
-        </size>
-       </property>
-       <property name="cursor">
-        <cursorShape>PointingHandCursor</cursorShape>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton {
-	background-color: #049DBF;
-	color: white;
-	font: bold 18pt &quot;Avenir&quot;;
-	border-radius: 25px;
-	margin-right: 5px;
-}
-
-QPushButton:hover {
-	background-color: #058ba8;
-}
-
-QPushButton:pressed {
-	background-color: #025373;
-}</string>
-       </property>
-       <property name="text">
-        <string>Add to watchlist</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="newSuggestion">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>50</height>
-        </size>
-       </property>
-       <property name="cursor">
-        <cursorShape>PointingHandCursor</cursorShape>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton {
-	background-color: #049DBF;
-	color: white;
-	font: bold 18pt &quot;Avenir&quot;;
-	border-radius: 25px;
-	margin-right: 5px;
-}
-
-QPushButton:hover {
-	background-color: #058ba8;
-}
-
-QPushButton:pressed {
-	background-color: #025373;
-}</string>
-       </property>
-       <property name="text">
-        <string>New suggestion</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QLabel" name="ratingLabel">
-    <property name="geometry">
-     <rect>
-      <x>220</x>
-      <y>120</y>
-      <width>110</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Avenir</family>
-      <pointsize>18</pointsize>
-      <weight>75</weight>
-      <italic>false</italic>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color : white;
-font: bold 18pt &quot;Avenir&quot;;</string>
-    </property>
-    <property name="text">
-     <string>IMDb-rating: </string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="imdbRating">
-    <property name="geometry">
-     <rect>
-      <x>340</x>
-      <y>120</y>
-      <width>450</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Avenir</family>
-      <pointsize>18</pointsize>
-      <weight>50</weight>
-      <italic>false</italic>
-      <bold>false</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color : white;
-font: 18pt &quot;Avenir&quot;;</string>
-    </property>
-    <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;8.6&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
+    <widget class="QPushButton" name="logo">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>160</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 24pt &quot;Raleway&quot;;
+color: white;
+text-align:left;</string>
+     </property>
+     <property name="text">
+      <string>MoviePicker</string>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+    </widget>
    </widget>
   </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>750</width>
-     <height>22</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>

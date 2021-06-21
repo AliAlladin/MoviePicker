@@ -2,7 +2,7 @@ import json
 import random
 
 from apiCommunicator import api
-from listHandler import *
+from listHandler import listHandler
 
 # Menu for the program
 def printMenu():
@@ -38,19 +38,19 @@ def getChoice():
 def findSomethingGood():
     while(True):
         movie = getRandomMovie()
-        if not alreadyInList('seen.json', movie) and not alreadyInList('watchlist.json', movie):
+        if not listHandler.alreadyInList('seen.json', movie) and not listHandler.alreadyInList('watchlist.json', movie):
             print(movie)
         else:
             findSomethingGood()
 
         choice = input('Already seen this movie? (yes/no): ')
         if choice == 'yes':
-            addToJson('seen.json', movie)
+            listHandler.addToJson('seen.json', movie)
             continue
         elif choice == 'no':
             choice = input('Want add this to your watchlist? (yes/no): ')
             if choice == 'yes':
-                addToJson('watchlist.json', movie)
+                listHandler.addToJson('watchlist.json', movie)
                 print('Added to your watchlist!\n')
 
             choice = input('Want another recommendation? (yes/no): ')
@@ -66,13 +66,12 @@ def getRandomMovie():
 
     movie = random.choice(top250Movies['items'])
 
-    if not alreadyInList('seen.json', movie) and not alreadyInList('watchlist.json', movie):
+    if not listHandler.alreadyInList('seen.json', movie) and not listHandler.alreadyInList('watchlist.json', movie):
         return movie
     else:
         getRandomMovie()
 
     # return random.choice(top250Movies)
-
 
 def main():
     while(True):
