@@ -9,12 +9,14 @@
 import requests
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+from controller import *
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.setEnabled(True)
-        MainWindow.resize(1000, 330)
+        MainWindow.resize(1000, 327)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -28,10 +30,10 @@ class Ui_MainWindow(object):
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.stackedWidget = QtWidgets.QStackedWidget(self.centralwidget)
-        self.stackedWidget.setGeometry(QtCore.QRect(0, 50, 1000, 280))
+        self.stackedWidget.setGeometry(QtCore.QRect(0, 50, 1001, 281))
         self.stackedWidget.setObjectName("stackedWidget")
 
-        #----------------------- Start Page ---------------------------#
+        # ----------------------- Start Page ---------------------------#
         self.start = QtWidgets.QWidget()
         self.start.setObjectName("start")
         self.verticalLayoutWidget = QtWidgets.QWidget(self.start)
@@ -70,29 +72,29 @@ class Ui_MainWindow(object):
         self.mostPopButton.setEnabled(True)
         self.mostPopButton.setMinimumSize(QtCore.QSize(250, 50))
         self.mostPopButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.mostPopButton.setStyleSheet(   "QPushButton {\n"
-                                            "    background-color: #A60D70;\n"
-                                            "    color: white;\n"
-                                            "    font: bold 18pt \"Avenir\";\n"
-                                            "    border-radius: 25px;\n"
-                                            "    margin-right: 5px;\n"
-                                            "}\n"
-                                            "\n"
-                                            "QPushButton:hover {\n"
-                                            "    background-color: #960c66;\n"
-                                            "}\n"
-                                            "\n"
-                                            "QPushButton:pressed {\n"
-                                            "    background-color: #87095b;\n"
-                                            "}")
+        self.mostPopButton.setStyleSheet("QPushButton {\n"
+                                         "    background-color: #A60D70;\n"
+                                         "    color: white;\n"
+                                         "    font: bold 18pt \"Avenir\";\n"
+                                         "    border-radius: 25px;\n"
+                                         "    margin-right: 5px;\n"
+                                         "}\n"
+                                         "\n"
+                                         "QPushButton:hover {\n"
+                                         "    background-color: #960c66;\n"
+                                         "}\n"
+                                         "\n"
+                                         "QPushButton:pressed {\n"
+                                         "    background-color: #87095b;\n"
+                                         "}")
         self.mostPopButton.setObjectName("mostPopButton")
         self.mostPopButton.clicked.connect(lambda: self.goToMovies('popular'))
         self.verticalLayout.addWidget(self.mostPopButton)
 
         self.stackedWidget.addWidget(self.start)
-        #--------------------------------------------------------------#
+        # --------------------------------------------------------------#
 
-        #---------------------- Movies Page ---------------------------#
+        # ---------------------- Movies Page ---------------------------#
         self.movies = QtWidgets.QWidget()
         self.movies.setObjectName("movies")
 
@@ -118,7 +120,6 @@ class Ui_MainWindow(object):
                                  "font: bold 24pt \"Avenir\";")
         self.title.setObjectName("title")
 
-
         self.horizontalLayoutWidget = QtWidgets.QWidget(self.movies)
         self.horizontalLayoutWidget.setGeometry(QtCore.QRect(220, 210, 761, 51))
         self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
@@ -130,21 +131,21 @@ class Ui_MainWindow(object):
         self.addToSeenButton = QtWidgets.QPushButton(self.horizontalLayoutWidget)
         self.addToSeenButton.setMinimumSize(QtCore.QSize(0, 50))
         self.addToSeenButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.addToSeenButton.setStyleSheet( "QPushButton {\n"
-                                            "    background-color: #049DBF;\n"
-                                            "    color: white;\n"
-                                            "    font: bold 18pt \"Avenir\";\n"
-                                            "    border-radius: 25px;\n"
-                                            "    margin-right: 5px;\n"
-                                            "}\n"
-                                            "\n"
-                                            "QPushButton:hover {\n"
-                                            "    background-color: #058ba8;\n"
-                                            "}\n"
-                                            "\n"
-                                            "QPushButton:pressed {\n"
-                                            "    background-color: #025373;\n"
-                                            "}")
+        self.addToSeenButton.setStyleSheet("QPushButton {\n"
+                                           "    background-color: #049DBF;\n"
+                                           "    color: white;\n"
+                                           "    font: bold 18pt \"Avenir\";\n"
+                                           "    border-radius: 25px;\n"
+                                           "    margin-right: 5px;\n"
+                                           "}\n"
+                                           "\n"
+                                           "QPushButton:hover {\n"
+                                           "    background-color: #058ba8;\n"
+                                           "}\n"
+                                           "\n"
+                                           "QPushButton:pressed {\n"
+                                           "    background-color: #025373;\n"
+                                           "}")
         self.addToSeenButton.setObjectName("addToSeenButton")
         self.addToSeenButton.clicked.connect(self.addToSeen)
         self.buttons_2.addWidget(self.addToSeenButton)
@@ -176,21 +177,21 @@ class Ui_MainWindow(object):
         self.newSuggestionButton = QtWidgets.QPushButton(self.horizontalLayoutWidget)
         self.newSuggestionButton.setMinimumSize(QtCore.QSize(0, 50))
         self.newSuggestionButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.newSuggestionButton.setStyleSheet( "QPushButton {\n"
-                                                "    background-color: #049DBF;\n"
-                                                "    color: white;\n"
-                                                "    font: bold 18pt \"Avenir\";\n"
-                                                "    border-radius: 25px;\n"
-                                                "    margin-right: 5px;\n"
-                                                "}\n"
-                                                "\n"
-                                                "QPushButton:hover {\n"
-                                                "    background-color: #058ba8;\n"
-                                                "}\n"
-                                                "\n"
-                                                "QPushButton:pressed {\n"
-                                                "    background-color: #025373;\n"
-                                                "}")
+        self.newSuggestionButton.setStyleSheet("QPushButton {\n"
+                                               "    background-color: #049DBF;\n"
+                                               "    color: white;\n"
+                                               "    font: bold 18pt \"Avenir\";\n"
+                                               "    border-radius: 25px;\n"
+                                               "    margin-right: 5px;\n"
+                                               "}\n"
+                                               "\n"
+                                               "QPushButton:hover {\n"
+                                               "    background-color: #058ba8;\n"
+                                               "}\n"
+                                               "\n"
+                                               "QPushButton:pressed {\n"
+                                               "    background-color: #025373;\n"
+                                               "}")
         self.newSuggestionButton.setObjectName("newSuggestionButton")
         self.buttons_2.addWidget(self.newSuggestionButton)
         self.newSuggestionButton.clicked.connect(self.newSuggestion)
@@ -212,7 +213,7 @@ class Ui_MainWindow(object):
         self.ratingLabel = QtWidgets.QLabel(self.movies)
         self.ratingLabel.setGeometry(QtCore.QRect(220, 70, 110, 30))
         self.ratingLabel.setStyleSheet("color : white;\n"
-                                        "font: bold 18pt \"Avenir\";")
+                                       "font: bold 18pt \"Avenir\";")
         self.ratingLabel.setObjectName("ratingLabel")
 
         # Trailer link
@@ -220,90 +221,21 @@ class Ui_MainWindow(object):
         self.trailerLink.setGeometry(QtCore.QRect(220, 150, 321, 32))
         self.trailerLink.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.trailerLink.setStyleSheet("QPushButton {\n"
-                                        "    color : #04C4D9;\n"
-                                        "    font: 18pt \"Avenir\";\n"
-                                        "    text-align:left;\n"
-                                        "}\n"
-                                        "\n"
-                                        "QPushButton:hover {\n"
-                                        "    font: 19pt \"Avenir\";\n"
-                                        "}")
+                                       "    color : #04C4D9;\n"
+                                       "    font: 18pt \"Avenir\";\n"
+                                       "    text-align:left;\n"
+                                       "}\n"
+                                       "\n"
+                                       "QPushButton:hover {\n"
+                                       "    font: 19pt \"Avenir\";\n"
+                                       "}")
         self.trailerLink.setFlat(True)
         self.trailerLink.setObjectName("trailerLink")
 
         self.stackedWidget.addWidget(self.movies)
-        #--------------------------------------------------------------#
+        # --------------------------------------------------------------#
 
-        #------------------------- Lists ------------------------------#
-        self.lists = QtWidgets.QWidget()
-        self.lists.setObjectName("lists")
-
-        self.scrollArea = QtWidgets.QScrollArea(self.lists)
-        self.scrollArea.setGeometry(QtCore.QRect(0, 0, 1000, 280))
-        self.scrollArea.setWidgetResizable(True)
-        self.scrollArea.setObjectName("scrollArea")
-
-        self.list = QtWidgets.QWidget()
-        self.list.setGeometry(QtCore.QRect(0, 0, 998, 278))
-        self.list.setObjectName("list")
-
-        self.listItem = QtWidgets.QWidget(self.list)
-        self.listItem.setGeometry(QtCore.QRect(0, 0, 1000, 80))
-        self.listItem.setStyleSheet("")
-        self.listItem.setObjectName("listItem")
-
-        self.listItemImage = QtWidgets.QLabel(self.listItem)
-        self.listItemImage.setGeometry(QtCore.QRect(20, 10, 50, 60))
-        self.listItemImage.setStyleSheet("background-color:red;")
-        self.listItemImage.setText("")
-        self.listItemImage.setPixmap(QtGui.QPixmap("studentplakat.jpg"))
-        self.listItemImage.setScaledContents(True)
-        self.listItemImage.setObjectName("listItemImage")
-
-        self.listItemRatingLabel = QtWidgets.QLabel(self.listItem)
-        self.listItemRatingLabel.setGeometry(QtCore.QRect(90, 40, 111, 30))
-        self.listItemRatingLabel.setStyleSheet("color : white;\n"
-                                                "font: bold 18pt \"Avenir\";")
-        self.listItemRatingLabel.setObjectName("listItemRatingLabel")
-
-        self.listItemTitle = QtWidgets.QLabel(self.listItem)
-        self.listItemTitle.setGeometry(QtCore.QRect(90, 10, 821, 31))
-        self.listItemTitle.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
-        self.listItemTitle.setStyleSheet("color : white;\n"
-                                        "font: bold 24pt \"Avenir\";")
-        self.listItemTitle.setObjectName("listItemTitle")
-
-        self.deleteButton = QtWidgets.QPushButton(self.listItem)
-        self.deleteButton.setGeometry(QtCore.QRect(920, 10, 50, 50))
-        self.deleteButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.deleteButton.setStyleSheet("color: white;\n"
-                                        "font: 48pt \"Avenir\";")
-        self.deleteButton.setFlat(True)
-        self.deleteButton.setObjectName("deleteButton")
-
-        self.listItemCrewList = QtWidgets.QLabel(self.listItem)
-        self.listItemCrewList.setGeometry(QtCore.QRect(320, 40, 700, 30))
-        self.listItemCrewList.setStyleSheet("color : white;\n"
-                                            "font: 18pt \"Avenir\";")
-        self.listItemCrewList.setObjectName("listItemCrewList")
-
-        self.listItemCrewLabel_2 = QtWidgets.QLabel(self.listItem)
-        self.listItemCrewLabel_2.setGeometry(QtCore.QRect(260, 40, 50, 30))
-        self.listItemCrewLabel_2.setStyleSheet("color : white;\n"
-                                                "font: bold 18pt \"Avenir\";")
-        self.listItemCrewLabel_2.setObjectName("listItemCrewLabel_2")
-
-        self.listItemRating = QtWidgets.QLabel(self.listItem)
-        self.listItemRating.setGeometry(QtCore.QRect(200, 40, 31, 30))
-        self.listItemRating.setStyleSheet("color : white;\n"
-                                            "font: 18pt \"Avenir\";")
-        self.listItemRating.setObjectName("listItemRating")
-
-        self.scrollArea.setWidget(self.list)
-        #--------------------------------------------------------------#
-
-        #------------------------- Menu -------------------------------#
-        self.stackedWidget.addWidget(self.lists)
+        # ------------------------- Menu -------------------------------#
         self.menu = QtWidgets.QWidget(self.centralwidget)
         self.menu.setGeometry(QtCore.QRect(0, 0, 1000, 50))
         self.menu.setAutoFillBackground(False)
@@ -315,49 +247,51 @@ class Ui_MainWindow(object):
         self.menuButtons_2 = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget_3)
         self.menuButtons_2.setContentsMargins(0, 0, 0, 0)
         self.menuButtons_2.setObjectName("menuButtons_2")
-        
+
         self.seenButton = QtWidgets.QPushButton(self.horizontalLayoutWidget_3)
         self.seenButton.setEnabled(True)
         self.seenButton.setMinimumSize(QtCore.QSize(0, 30))
         self.seenButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.seenButton.setStyleSheet("QPushButton {\n"
-                                        "    background-color: #A60D70;\n"
-                                        "    color: white;\n"
-                                        "    font: bold 16pt \"Avenir\";\n"
-                                        "    border-radius: 15px;\n"
-                                        "    margin-right: 5px;\n"
-                                        "}\n"
-                                        "\n"
-                                        "QPushButton:hover {\n"
-                                        "    background-color: #960c66;\n"
-                                        "}\n"
-                                        "\n"
-                                        "QPushButton:pressed {\n"
-                                        "    background-color: #87095b;\n"
-                                        "}")
+                                      "    background-color: #A60D70;\n"
+                                      "    color: white;\n"
+                                      "    font: bold 16pt \"Avenir\";\n"
+                                      "    border-radius: 15px;\n"
+                                      "    margin-right: 5px;\n"
+                                      "}\n"
+                                      "\n"
+                                      "QPushButton:hover {\n"
+                                      "    background-color: #960c66;\n"
+                                      "}\n"
+                                      "\n"
+                                      "QPushButton:pressed {\n"
+                                      "    background-color: #87095b;\n"
+                                      "}")
         self.seenButton.setObjectName("seenButton")
         self.seenButton.clicked.connect(lambda: self.goToList('seen'))
-        
+
         self.menuButtons_2.addWidget(self.seenButton)
         self.watchlistButton = QtWidgets.QPushButton(self.horizontalLayoutWidget_3)
         self.watchlistButton.setMinimumSize(QtCore.QSize(0, 30))
         self.watchlistButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.watchlistButton.setStyleSheet("QPushButton {\n"
-                                            "    background-color: #A60D70;\n"
-                                            "    color: white;\n"
-                                            "    font: bold 16pt \"Avenir\";\n"
-                                            "    border-radius: 15px;\n"
-                                            "    margin-right: 5px;\n"
-                                            "}\n"
-                                            "\n"
-                                            "QPushButton:hover {\n"
-                                            "    background-color: #960c66;\n"
-                                            "}\n"
-                                            "\n"
-                                            "QPushButton:pressed {\n"
-                                            "    background-color: #87095b;\n"
-                                            "}")
+                                           "    background-color: #A60D70;\n"
+                                           "    color: white;\n"
+                                           "    font: bold 16pt \"Avenir\";\n"
+                                           "    border-radius: 15px;\n"
+                                           "    margin-right: 5px;\n"
+                                           "}\n"
+                                           "\n"
+                                           "QPushButton:hover {\n"
+                                           "    background-color: #960c66;\n"
+                                           "}\n"
+                                           "\n"
+                                           "QPushButton:pressed {\n"
+                                           "    background-color: #87095b;\n"
+                                           "}")
         self.watchlistButton.setObjectName("watchlistButton")
+        self.watchlistButton.clicked.connect(lambda: self.goToList('watchlist'))
+
         self.menuButtons_2.addWidget(self.watchlistButton)
         self.logo = QtWidgets.QPushButton(self.menu)
         self.logo.setGeometry(QtCore.QRect(20, 10, 160, 30))
@@ -368,7 +302,7 @@ class Ui_MainWindow(object):
         self.logo.setFlat(True)
         self.logo.setObjectName("logo")
         self.logo.clicked.connect(self.goToStart)
-        #--------------------------------------------------------------#
+        # --------------------------------------------------------------#
 
         MainWindow.setCentralWidget(self.centralwidget)
 
@@ -377,69 +311,164 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.top250Button.setText(_translate("MainWindow", "Top 250"))
-        self.mostPopButton.setText(_translate("MainWindow", "Most Popular"))
-        self.crewLabel.setText(_translate("MainWindow", "Crew:"))
-        self.imdbRating.setText(_translate("MainWindow", "<html><head/><body><p>8.6</p></body></html>"))
-        self.title.setText(_translate("MainWindow", "It\'s a Wonderful Life (1946)"))
-        self.addToSeenButton.setText(_translate("MainWindow", "Already seen"))
-        self.addToWatchlistButton.setText(_translate("MainWindow", "Add to watchlist"))
-        self.newSuggestionButton.setText(_translate("MainWindow", "New suggestion"))
-        self.crewList.setText(_translate("MainWindow", "<html><head/><body><p>Frank Capra (dir.), James Stewart, Donna Ree</p></body></html>"))
-        self.ratingLabel.setText(_translate("MainWindow", "IMDb-rating: "))
-        self.trailerLink.setText(_translate("MainWindow", "Watch trailer (opens in YouTube)"))
-        self.listItemRatingLabel.setText(_translate("MainWindow", "IMDb-rating:"))
-        self.listItemTitle.setText(_translate("MainWindow", "It\'s a Wonderful Life (1946)"))
-        self.deleteButton.setText(_translate("MainWindow", "x"))
-        self.listItemCrewList.setText(_translate("MainWindow", "Person 1"))
-        self.listItemCrewLabel_2.setText(_translate("MainWindow", "Crew:"))
-        self.listItemRating.setText(_translate("MainWindow", "8.6"))
-        self.seenButton.setText(_translate("MainWindow", "Seen"))
-        self.watchlistButton.setText(_translate("MainWindow", "Watchlist"))
-        self.logo.setText(_translate("MainWindow", "MoviePicker"))
+        MainWindow.setWindowTitle("MoviePicker")
+        self.top250Button.setText("Top 250")
+        self.mostPopButton.setText("Most Popular")
+        self.crewLabel.setText("Crew:")
+        self.addToSeenButton.setText("Already seen")
+        self.addToWatchlistButton.setText("Add to watchlist")
+        self.newSuggestionButton.setText("New suggestion")
+        self.ratingLabel.setText("IMDb-rating: ")
+        self.trailerLink.setText("Watch trailer (opens in YouTube)")
 
-    def newSuggestion(self, apiName):
-        global movie
-        movie = getRandomMovie(apiName)
-        try:
-            self.title.setText(movie['fullTitle'])
+        self.seenButton.setText("Seen")
+        self.watchlistButton.setText("Watchlist")
+        self.logo.setText("MoviePicker")
+
+    def newSuggestion(self):
+            global movie
+            movie = getRandomMovie(apiName)
+            try:
+                    self.title.setText(movie['fullTitle'])
+
+                    image_url = movie['image']
+                    image = QtGui.QPixmap()
+                    image.loadFromData(requests.get(image_url).content)
+                    self.posterImage.setPixmap(image)
+                    self.imdbRating.setText(movie['imDbRating'])
+                    self.crewList.setText(movie['crew'])
+
+            except TypeError:
+                    print("TypeError")
+                    self.newSuggestion()
+
+    def addToSeen(self):
+            listHandler.addToJson('seen.json', movie)
+            self.newSuggestion()
+
+    def addToWatchList(self):
+            listHandler.addToJson('watchlist.json', movie)
+            self.newSuggestion()
+
+
+    def goToMovies(self, api):
+            global apiName
+            apiName = api
+            self.newSuggestion()
+            self.stackedWidget.setCurrentWidget(self.movies)
+
+    def goToStart(self):
+            self.stackedWidget.setCurrentWidget(self.start)
+
+    def populateList(self, listName):
+        self.lists = QtWidgets.QWidget()
+        self.lists.setObjectName("lists")
+        self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.lists)
+        self.verticalLayout_4.setObjectName("verticalLayout_4")
+        self.scrollArea = QtWidgets.QScrollArea(self.lists)
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollArea.setObjectName("scrollArea")
+        self.listItems = QtWidgets.QWidget()
+        self.listItems.setGeometry(QtCore.QRect(0, 0, 975, 284))
+        self.listItems.setObjectName("listItems")
+        self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.listItems)
+        self.verticalLayout_5.setObjectName("verticalLayout_5")
+
+        global movies
+        if listName == 'seen':
+            movies = getAlreadySeen()
+
+        elif listName == 'watchlist':
+            movies = getWatchlist();
+
+        for movie in movies:
+            self.listItem = QtWidgets.QWidget(self.listItems)
+            sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
+            sizePolicy.setHorizontalStretch(0)
+            sizePolicy.setVerticalStretch(0)
+            sizePolicy.setHeightForWidth(self.listItem.sizePolicy().hasHeightForWidth())
+            self.listItem.setSizePolicy(sizePolicy)
+            self.listItem.setMinimumSize(QtCore.QSize(0, 80))
+            self.listItem.setLayoutDirection(QtCore.Qt.LeftToRight)
+            self.listItem.setStyleSheet("background-color:blue;")
+            self.listItem.setObjectName("listItem")
+
+            self.listItemImage = QtWidgets.QLabel(self.listItem)
+            self.listItemImage.setGeometry(QtCore.QRect(10, 10, 50, 60))
+            self.listItemImage.setText("")
+            self.listItemImage.setScaledContents(True)
+            self.listItemImage.setObjectName("listItemImage")
 
             image_url = movie['image']
             image = QtGui.QPixmap()
             image.loadFromData(requests.get(image_url).content)
-            self.posterImage.setPixmap(image)
+            self.listItemImage.setPixmap(image)
 
-            self.imdbRating.setText(movie['imDbRating'])
+            self.listItemRatingLabel = QtWidgets.QLabel(self.listItem)
+            self.listItemRatingLabel.setGeometry(QtCore.QRect(80, 40, 111, 30))
+            self.listItemRatingLabel.setStyleSheet("color : white;\n"
+                                                   "font: bold 18pt \"Avenir\";")
+            self.listItemRatingLabel.setObjectName("listItemRatingLabel")
+            self.listItemRatingLabel.setText('IMDb-rating:')
 
-            self.crewList.setText(movie['crew'])
-        except TypeError:
-            print("TypeError")
-            self.newSuggestion(apiName)
+            self.listItemTitle = QtWidgets.QLabel(self.listItem)
+            self.listItemTitle.setGeometry(QtCore.QRect(80, 10, 821, 31))
+            self.listItemTitle.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
+            self.listItemTitle.setStyleSheet("color : white;\n"
+                                             "font: bold 24pt \"Avenir\";")
+            self.listItemTitle.setObjectName("listItemTitle")
+            self.listItemTitle.setText(movie['fullTitle'])
 
-    def addToSeen(self):
-        listHandler.addToJson('seen.json', movie)
-        self.newSuggestion()
+            self.deleteButton = QtWidgets.QPushButton(self.listItem)
+            self.deleteButton.setGeometry(QtCore.QRect(890, 10, 50, 50))
+            self.deleteButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+            self.deleteButton.setStyleSheet("color: white;\n"
+                                            "font: 48pt \"Avenir\";")
+            self.deleteButton.setFlat(True)
+            self.deleteButton.setText('x')
+            self.deleteButton.clicked.connect(lambda checked, id = movie['id']: self.deleteItem(listName, id))
+            self.deleteButton.setObjectName(movie['id'] + "DeleteButton")
 
-    def addToWatchList(self):
-        listHandler.addToJson('watchlist.json', movie)
-        self.newSuggestion()
+            self.listItemCrewList = QtWidgets.QLabel(self.listItem)
+            self.listItemCrewList.setGeometry(QtCore.QRect(320, 40, 571, 30))
+            self.listItemCrewList.setStyleSheet("color : white;\n"
+                                                "font: 18pt \"Avenir\";")
+            self.listItemCrewList.setObjectName("listItemCrewList")
+            self.listItemCrewList.setText(movie['crew'])
 
-    def goToMovies(self, apiName):
-        self.newSuggestion(apiName)
-        self.stackedWidget.setCurrentWidget(self.movies)
+            self.listItemCrewLabel = QtWidgets.QLabel(self.listItem)
+            self.listItemCrewLabel.setGeometry(QtCore.QRect(260, 40, 50, 30))
+            self.listItemCrewLabel.setStyleSheet("color : white;\n"
+                                                 "font: bold 18pt \"Avenir\";")
+            self.listItemCrewLabel.setObjectName("listItemCrewLabel")
+            self.listItemCrewLabel.setText('Crew:')
 
-    def goToStart(self):
-        self.stackedWidget.setCurrentWidget(self.start)
+            self.listItemRating = QtWidgets.QLabel(self.listItem)
+            self.listItemRating.setGeometry(QtCore.QRect(200, 40, 31, 30))
+            self.listItemRating.setStyleSheet("color : white;\n"
+                                              "font: 18pt \"Avenir\";")
+            self.listItemRating.setObjectName("listItemRating")
+            self.listItemRating.setText(movie['imDbRating'])
+
+            self.verticalLayout_5.addWidget(self.listItem)
+
+        self.scrollArea.setWidget(self.listItems)
+        self.verticalLayout_4.addWidget(self.scrollArea)
+        self.stackedWidget.addWidget(self.lists)
 
     def goToList(self, list):
+        self.populateList(list)
         self.stackedWidget.setCurrentWidget(self.lists)
 
+    def deleteItem(self, listName, id):
+        if listName == 'watchlist':
+            removeFromWatchList(id)
+        elif listName == 'seen':
+            removeFromSeen(id)
+        self.goToList(listName)
 
 if __name__ == "__main__":
     import sys
-    from controller import *
-
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()

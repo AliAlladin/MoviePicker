@@ -21,6 +21,14 @@ class apiCommunicator:
         top250 = json.loads(data.decode("utf-8"))
         return top250['items']
 
+    # Function returns the json of the 100 most popular movies in the database by connecting to the API.
+    def getPopular(self):
+        self.conn.request("GET", "/en/API/MostPopularMovies/" + self.apiKey, self.payload, self.headers)
+        res = self.conn.getresponse()
+        data = res.read()
+        popular = json.loads(data.decode("utf-8"))
+        return popular['items']
+
     # Function searches for movies in the database by connecting to the API given a title and returns the json of the
     # search result.
     def searchMovie(self, title):
@@ -36,7 +44,6 @@ api = apiCommunicator()
 import json
 
 class listHandler:
-
     # Adds movie to the desired list provided name of the json file and the json of the movie.
     def addToJson(self, filename, movie):
         with open('./' + filename) as json_file:
@@ -48,13 +55,13 @@ class listHandler:
             json.dump(data, json_file, indent=2)
 
     # Function deletes a movie from json file provided the name of the file and the movie json.
-    def deleteFromJson(self, filename, movie):
+    def deleteFromJson(self, filename, id):
         with open('./' + filename) as json_file:
             data = json.load(json_file)
 
         temp = data['movies']
         for i in range(len(temp)):
-            if temp[i]['id'] == movie['id']:
+            if temp[i]['id'] == id:
                 del temp[i]
                 break
 
@@ -71,6 +78,11 @@ class listHandler:
                 return True
 
         return False
+
+    def getList(self, filename):
+        with open('./' + filename) as json_file:
+            data = json.load(json_file)
+        return data['movies']
 
 listHandler = listHandler()
 
@@ -91,3 +103,15 @@ def getRandomMovie(apiName):
         return movie
     else:
         getRandomMovie(apiName)
+
+def getAlreadySeen():
+    return listHandler.getList('seen.json')
+
+def getWatchlist():
+    return listHandler.getList('watchlist.json')
+
+def removeFromWatchList(id):
+    listHandler.deleteFromJson('watchlist.json', id)
+
+def removeFromSeen(id):
+    listHandler.deleteFromJson('seen.json', id)
