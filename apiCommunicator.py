@@ -16,6 +16,22 @@ class apiCommunicator:
         top250 = json.loads(data.decode("utf-8"))
         return top250['items']
 
+    # Function returns the json of the most popular movies in the database by connecting to the API.
+    def getPopular(self):
+        self.conn.request("GET", "/en/API/MostPopularMovies/" + self.apiKey, self.payload, self.headers)
+        res = self.conn.getresponse()
+        data = res.read()
+        popular = json.loads(data.decode("utf-8"))
+        return popular['items']
+
+    # Function returns the youtube-link of the most popular movies in the database by connecting to the API.
+    def getTrailer(self, id):
+        self.conn.request("GET", "/en/API/YouTubeTrailer/" + self.apiKey + '/' + id, self.payload, self.headers)
+        res = self.conn.getresponse()
+        data = res.read()
+        trailer = json.loads(data.decode("utf-8"))
+        return trailer['videoUrl']
+
     # Function searches for movies in the database by connecting to the API given a title and returns the json of the
     # search result.
     def searchMovie(self, title):

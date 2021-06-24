@@ -49,3 +49,7 @@ class controller:
     # Deletes movie from 'seen' provided the id of the movie
     def removeFromSeen(self, id):
         self.listHandler.deleteFromJson('seen.json', id)
+
+
+    def getTrailerLink(self, id):
+        return self.apiComunicator.getTrailer(id)
