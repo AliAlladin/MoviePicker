@@ -24,6 +24,3 @@ class apiCommunicator:
         data = res.read()
         searchResult = json.loads(data.decode("utf-8"))
         return searchResult['results']
-
-# Instance of the class.
-api = apiCommunicator()
