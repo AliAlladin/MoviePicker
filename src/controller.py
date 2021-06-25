@@ -1,5 +1,6 @@
-import json
 import random
+import webbrowser
+
 from apiCommunicator import *
 from listHandler import *
 
@@ -10,16 +11,13 @@ class controller:
 
     # Returns a random movie from either top250 or popular
     def getRandomMovie(self, apiName):
-        # global movies
-        # if apiName == 'top250':
-        #    movies = api.getTop250()
-        # elif apiName == 'popular':
-        #    movies = api.getPopular()
+        global movies
+        if apiName == 'top250':
+           movies = self.apiComunicator.getTop250()
+        elif apiName == 'popular':
+           movies = self.apiComunicator.getPopular()
 
-        with open('./top250.json') as top250:
-            top250Movies = json.loads(top250.read())
-
-        movie = random.choice(top250Movies['items'])
+        movie = random.choice(movies)
 
         if not self.listHandler.alreadyInList('seen.json', movie) and not self.listHandler.alreadyInList('watchlist.json', movie):
             return movie
@@ -53,3 +51,11 @@ class controller:
 
     def getTrailerLink(self, id):
         return self.apiComunicator.getTrailer(id)
+
+    def playTrailer(self, movie):
+        try:
+            link = self.getTrailerLink(movie['id'])
+            print(link)
+            webbrowser.open(link)
+        except NameError:
+            pass

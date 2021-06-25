@@ -1,0 +1,26 @@
+{
+  "movies": [
+    {
+      "id": "tt0107290",
+      "rank": "172",
+      "title": "Jurassic Park",
+      "fullTitle": "Jurassic Park (1993)",
+      "year": "1993",
+      "image": "https://imdb-api.com/images/original/MV5BMjM2MDgxMDg0Nl5BMl5BanBnXkFtZTgwNTM2OTM5NDE@._V1_Ratio0.6716_AL_.jpg",
+      "crew": "Steven Spielberg (dir.), Sam Neill, Laura Dern",
+      "imDbRating": "8.1",
+      "imDbRatingCount": "889802"
+    },
+    {
+      "id": "tt0073486",
+      "rank": "18",
+      "title": "One Flew Over the Cuckoo's Nest",
+      "fullTitle": "One Flew Over the Cuckoo's Nest (1975)",
+      "year": "1975",
+      "image": "https://imdb-api.com/images/original/MV5BZjA0OWVhOTAtYWQxNi00YzNhLWI4ZjYtNjFjZTEyYjJlNDVlL2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_Ratio0.6716_AL_.jpg",
+      "crew": "Milos Forman (dir.), Jack Nicholson, Louise Fletcher",
+      "imDbRating": "8.6",
+      "imDbRatingCount": "937154"
+    }
+  ]
+}

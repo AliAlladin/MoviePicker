@@ -3,10 +3,10 @@ import json
 
 class apiCommunicator:
     def __init__(self):
+        self.apiKey = 'k_duwxdunl'
         self.conn = http.client.HTTPSConnection("imdb-api.com", 443)
         self.payload = ''
         self.headers = {}
-        self.apiKey = 'k_57a3yf8o'
 
     # Function returns the json of the top 250 movies in the database by connecting to the API.
     def getTop250(self):
