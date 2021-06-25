@@ -1,10 +1,12 @@
 import json
+from pathlib import Path
 
 class listHandler:
 
     # Adds movie to the desired list provided name of the json file and the json of the movie.
     def addToJson(self, filename, movie):
-        with open('./lists/' + filename) as json_file:
+        path = Path('./lists/' + filename)
+        with open(path) as json_file:
             data = json.load(json_file)
             temp = data['movies']
             temp.append(movie)
@@ -14,7 +16,8 @@ class listHandler:
 
     # Function deletes a movie from json file provided the name of the file and the movie json.
     def deleteFromJson(self, filename, id):
-        with open('./lists/' + filename) as json_file:
+        path = Path('./lists/' + filename)
+        with open(path) as json_file:
             data = json.load(json_file)
         temp = data['movies']
         for i in range(len(temp)):
@@ -37,7 +40,8 @@ class listHandler:
         return False
 
     def getList(self, filename):
-        with open('./lists/' + filename) as json_file:
+        path = Path('./lists/' + filename)
+        with open(path) as json_file:
             data = json.load(json_file)
 
         return data['movies']
